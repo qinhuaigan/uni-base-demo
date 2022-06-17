@@ -74,7 +74,32 @@
             "base" : "./"
         },
         "devServer" : {
-            "https" : false
+            "https" : false,
+            "port": 8080,
+            "proxy": {
+              // 这里配置 '/api' 就等价于 target , 你在链接里访问 /api === http://localhost:54321
+              "/v1": {
+                "target": "http://192.168.2.153",
+                // secure: true, // 如果是 https ,需要开启这个选项
+                "changeOrigin": true, // 是否是跨域请求?肯定是啊,不跨域就没有必要配置这个proxyTable了.
+                "pathRewrite": {
+                  // 这里是追加链接,比如真是接口里包含了 /api,就需要这样配置.
+                  "^/v1": "/v1" // 和下边两种写法，因人而异根据需求。
+                  // 等价于    /api + /api  ==  http://localhost:54321/api
+                  // 如果写为 '^/api' : '/'
+                  // 等价于   /api + /  ==  http://localhost:54321/
+                  // 这里的 /api ==  http://localhost:54321
+                }
+              },
+              "/data/access": {
+                "target": "http://192.168.2.153",
+                // secure: true, // 如果是 https ,需要开启这个选项
+                "changeOrigin": true,
+                "pathRewrite": {
+                  "^/data/access": "/data/access"
+                }
+              }
+            }
         }
     }
 }

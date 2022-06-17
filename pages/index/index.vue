@@ -10,7 +10,7 @@
 			}
 		},
 		onLoad() {
-
+      this.$request('get', '/trade/floor/popularForWeb')
 		},
 		methods: {
 
