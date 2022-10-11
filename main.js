@@ -11,8 +11,10 @@ import './css/style.css'
 
 Vue.config.productionTip = false
 
-Vue.prototype.serverPath = "/v1"
-Vue.prototype.serverFilePath = "/data/access"
+// 配置项
+Vue.prototype.serverPath = config.serverPath // 请求路径
+Vue.prototype.serverFilePath = config.serverFilePath // 文件路径
+Vue.prototype.appName = config.name // 应用名称
 
 Vue.prototype.$request = function(method, url, data, isJSON, hideLoading) {
   return new Promise((resolve) => {

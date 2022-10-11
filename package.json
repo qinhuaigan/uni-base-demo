@@ -3,8 +3,29 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "uni-app": {
+    "scripts": {
+      "weixin:dev": {
+        "title": "开发版",
+        "env": {
+          "UNI_PLATFORM": "mp-weixin",
+          "ENV_PATH": "./env/dev.js"
+        },
+        "define": {
+          "WXCS-PLATFORM": true
+        }
+      },
+      "weixin:long": {
+        "title": "测试版",
+        "env": {
+          "UNI_PLATFORM": "mp-weixin",
+          "ENV_PATH": "./env/prod.js"
+        },
+        "define": {
+          "WXSC-PLATFORM": true
+        }
+      }
+    }
   },
   "keywords": [],
   "author": "",
