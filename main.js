@@ -12,6 +12,7 @@ import './css/style.css'
 Vue.config.productionTip = false
 
 // 配置项
+const config = process.env.ENV_PATH ? require(process.env.ENV_PATH) : require('./env/dev.js')
 Vue.prototype.serverPath = config.serverPath // 请求路径
 Vue.prototype.serverFilePath = config.serverFilePath // 文件路径
 Vue.prototype.appName = config.name // 应用名称
@@ -23,7 +24,6 @@ Vue.prototype.$request = function(method, url, data, isJSON, hideLoading) {
         title: '请稍后...'
       })
     }
-
     const token = uni.getStorageSync('token')
     url = url.indexOf('http') === 0 ? url : `${Vue.prototype.serverPath}${url}?token=${token}`
     uni.request({
@@ -39,12 +39,19 @@ Vue.prototype.$request = function(method, url, data, isJSON, hideLoading) {
           resolve(res.data)
         } else {
           resolve(false)
-          this.$refs.uNotify.show({
-            type: 'error',
-            top: 0,
-            message: res.data.msg,
-            icon: 'error-circle'
-          });
+          if (this.$refs.uNotify) {
+            this.$refs.uNotify.show({
+              type: 'error',
+              top: 0,
+              message: res.data.msg,
+              icon: 'error-circle'
+            });
+          } else {
+            uni.showToast({
+              title: '标题',
+              duration: 2000
+            });
+          }
         }
       },
       fail: (err) => {
