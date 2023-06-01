@@ -76,11 +76,13 @@ function replaceScssPath(path, value) { // 修改 uni.scss.json 的配置
   Scss = ScssArr.join('\n')
 }
 // 使用
-const path = package_json['uni-app']['scripts'][process.env.UNI_SCRIPT]['env']['ENV_PATH'] // 配置文件路径
-const config = require(path) // 读取配置信息
-replaceManifest('mp-weixin.appid', `"${config.appId}"`) // 更新 appid
-replacePagejson('globalStyle.navigationBarTitleText', `"${config.name}"`) // 更新 pages.json
-replaceScssPath('base-img-url', `'${config.serverFilePath}'`)
+if (process.env.UNI_SCRIPT) {
+  const path = package_json['uni-app']['scripts'][process.env.UNI_SCRIPT]['env']['ENV_PATH'] // 配置文件路径
+  const config = require(path) // 读取配置信息
+  replaceManifest('mp-weixin.appid', `"${config.appId}"`) // 更新 appid
+  replacePagejson('globalStyle.navigationBarTitleText', `"${config.name}"`) // 更新 pages.json
+  replaceScssPath('base-img-url', `'${config.serverFilePath}'`)
+}
 
 // 更新 manifest.json
 fs.writeFileSync(manifestPath, Manifest, {
