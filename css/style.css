@@ -3,13 +3,11 @@
   padding: 0;
 }
 
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
+.pageBg {
+  background-color: rgb(244, 245, 249);
+  padding-bottom: 30rpx;
+  position: relative;
+  min-height: calc(100vh - 15px);
 }
 
 .margin0px {
@@ -19,6 +17,8 @@ a {
 .padding0px {
   padding: 0 !important;
 }
+
+
 
 .text-left {
   text-align: left !important;
@@ -107,7 +107,7 @@ a {
 }
 
 .mt40px {
-  margin-top: 40rpx !important;
+  margin-top: 80rpx !important;
 }
 
 .mt50px {
@@ -135,7 +135,7 @@ a {
 }
 
 .mb20px {
-  margin-bottom: 30rpx !important;
+  margin-bottom: 40rpx !important;
 }
 
 .mb60px {
@@ -279,7 +279,7 @@ a {
 }
 
 .lineHeight28px {
-  line-height: 28px !important;
+  line-height: 56rpx !important;
 }
 
 .lineHeight32px {
@@ -320,6 +320,10 @@ a {
   color: #ccc;
 }
 
+.invalidColor100 {
+  color: #979797;
+}
+
 .warnColor {
   color: #E6A23C;
 }
@@ -330,6 +334,15 @@ a {
 
 .failColor {
   color: #F56C6C;
+}
+.rose0 {
+  color: red;
+}
+.sky0{
+  color: #f0f9ff;
+}
+.sky5{
+  color: #0ea5e9;
 }
 
 .pageWrap {
@@ -408,4 +421,23 @@ a {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   word-break: break-all;
+}
+
+.isIphoneX{
+  padding-bottom: 60rpx;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ellipsis-2 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
