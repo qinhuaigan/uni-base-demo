@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 
-import uView from "uview-ui";
-Vue.use(uView);
-
 import './css/style.css'
 
 // 此处为演示vuex使用，非uView的功能部分
